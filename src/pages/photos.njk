@@ -1,0 +1,17 @@
+---
+layout: base.njk
+title: Fotos
+permalink: /fotos/
+---
+{% import "macros.njk" as m with context %}
+
+<h1 class="page-title">Fotos</h1>
+
+{% for group in collections.eventsDesc | byYear %}
+  <section class="year">
+    <h2 class="year-title">{{ group.year }}</h2>
+    <div class="tiles">
+      {% for p in group.items %}{% if (p.date | photos).length %}{{ m.tile(p) }}{% endif %}{% endfor %}
+    </div>
+  </section>
+{% endfor %}

@@ -1,0 +1,80 @@
+{% macro badges(list) %}
+  <span class="badges">
+    {% for id in list %}
+      <span class="badge type-{{ eventTypes[id].color }}">{{ eventTypes[id].name }}</span>
+    {% endfor %}
+  </span>
+{% endmacro %}
+
+{% macro standingsTable(division, limit) %}
+  <table class="standings">
+    <thead>
+      <tr>
+        <th class="pos">#</th>
+        <th>Jogador</th>
+        <th class="record"><abbr title="Vitória-Derrota-Empate">Score</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in division.players %}
+        {% if not limit or loop.index <= limit %}
+          <tr class="{% if p.place == 1 %}champion{% endif %}">
+            <td class="pos">{{ p.place }}</td>
+            <td>{{ p.name }}</td>
+            <td class="record">{{ p.record }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endmacro %}
+
+{% macro cover(post) %}
+  {% set photo = post.date | cover %}
+  {% if photo %}
+    <img src="{{ photo.thumb }}" width="{{ photo.tw }}" height="{{ photo.th }}" alt="" loading="lazy" />
+  {% else %}
+    <span class="no-photo"><img src="/assets/logo.svg" alt="" /></span>
+  {% endif %}
+{% endmacro %}
+
+{% macro playerPhoto(player) %}
+  {% if player.photo %}
+    <img src="{{ player.photo }}" alt="" loading="lazy" />
+  {% else %}
+    <span class="no-photo"><img src="/assets/logo.svg" alt="" /></span>
+  {% endif %}
+{% endmacro %}
+
+{% macro tile(post) %}
+  <a class="tile" href="{{ post.url }}">
+    <span class="tile-photo">{{ cover(post) }}</span>
+    {{ badges(post.data.types) }}
+    <strong class="tile-title">{{ post.data.title }}</strong>
+    <span class="tile-meta">{{ post.date | longDate }}, {{ post.date | photos | length | photoCount }}</span>
+  </a>
+{% endmacro %}
+
+{% macro postSummary(post) %}
+  {% set cs = post | champions %}
+  <article class="post-summary" data-types="{{ post.data.types | join(' ') }}" data-store="{{ post.data.store or '' }}">
+    <span class="post-summary-photo">{{ cover(post) }}</span>
+    <div class="post-summary-body">
+      {{ badges(post.data.types) }}
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p class="event-meta">{{ post.date | longDate }}{% if post.data.store %}, {{ (post.data.store | store(stores)).name }}{% elif post.data.venue %}, {{ post.data.venue }}{% endif %}</p>
+      {% if cs.length %}
+        <ul class="post-champions">
+          {% for c in cs %}
+            {% set runnerUp = c.division.players[1] %}
+            <li>
+              {% if cs.length > 1 %}<span class="tournament-name">{{ eventTypes[c.tournament.type].name }}</span>{% endif %}
+              <span><b class="placing">1º</b> <strong>{{ c.player.name | displayName }}</strong></span>
+              {% if runnerUp %}<span><b class="placing">2º</b> {{ runnerUp.name | displayName }}</span>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </article>
+{% endmacro %}

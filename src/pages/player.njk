@@ -1,0 +1,79 @@
+---
+layout: base.njk
+pagination:
+  data: collections.players
+  size: 1
+  alias: player
+permalink: /jogadores/{{ player.slug }}/
+eleventyComputed:
+  title: "{{ player.display }}"
+---
+{% import "macros.njk" as m with context %}
+
+<header class="player-header">
+  <span class="player-photo">{{ m.playerPhoto(player) }}</span>
+  <div class="event-titles">
+    <h1>{{ player.display }}</h1>
+    <p class="event-meta">{{ player.wins.length | winCount }}</p>
+  </div>
+</header>
+
+{% if player.majors.length %}
+  <section class="player-section">
+    <h2 class="year-title">Resultados em Majors</h2>
+    <ul class="major-results">
+      {% for r in player.majors %}{% for e in r.events %}<li>{{ e }} - <strong>{{ r.place }}</strong></li>{% endfor %}{% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+<section class="player-section">
+  <h2 class="year-title">Vitórias</h2>
+  {% if player.wins.length %}
+    <ol class="event-list player-wins">
+      {% for w in player.wins %}
+        {% set s = w.post.data.store | store(stores) if w.post.data.store else null %}
+        <li>
+          <a class="event-row row-schedule" href="{{ w.post.url }}">
+            <span class="date-block"><span class="date-day">{{ w.post.date | day }}</span><span class="date-month">{{ w.post.date | month }} {{ w.post.date | year }}</span></span>
+            <span class="row-info">
+              <strong class="row-title">{{ eventTypes[w.tournament.type].name }}</strong>
+              <span class="event-meta">{{ w.post.date | longDate }}{% if s %}, {{ s.name }}{% endif %}{% if w.division %}, {{ w.division }}{% endif %}</span>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty">Nenhuma vitória ainda.</p>
+  {% endif %}
+</section>
+
+<section class="player-section">
+  <h2 class="year-title">Torneios</h2>
+  <div class="table-scroll">
+    <table class="standings player-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Torneio</th>
+          <th>Loja</th>
+          <th class="pos">#</th>
+          <th class="record"><abbr title="Vitória-Derrota-Empate">Score</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in player.entries %}
+          {% set s = e.post.data.store | store(stores) if e.post.data.store else null %}
+          <tr class="{% if e.place == 1 %}champion{% endif %}">
+            <td class="nowrap"><a href="{{ e.post.url }}">{{ e.post.date | day }} {{ e.post.date | month }} {{ e.post.date | year }}</a></td>
+            <td>{{ m.badges([e.tournament.type]) }}</td>
+            <td>{% if s %}{{ s.name }}{% endif %}</td>
+            <td class="pos">{{ e.place }}º</td>
+            <td class="record">{{ e.record }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Lojas
+permalink: /lojas/
+---
+<h1 class="page-title">Lojas</h1>
+
+<section class="event-text">
+  <p>Estas são as lojas parceiras do VGC-RS. Os torneios costumam acontecer uma vez por mês em cada uma.</p>
+</section>
+
+<div class="stores">
+  {% for s in stores %}{% if s.active %}
+    <section class="store" id="{{ s.id }}">
+      <div class="store-header">
+        <h2>{{ s.name }}</h2>
+        <p class="event-meta">{% if s.address %}{{ s.address }}{% if s.city %}, {{ s.city }}{% endif %}{% else %}Endereço a confirmar{% endif %}</p>
+        <div class="actions">
+          {% if s.address %}<a class="button" href="https://www.google.com/maps/search/?api=1&query={{ (s.address + ', ' + (s.city or '') + ', RS') | urlencode }}" target="_blank" rel="noopener">Abrir no Mapa</a>{% endif %}
+          {% if s.instagram %}<a class="button button-secondary" href="https://instagram.com/{{ s.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        </div>
+        {% if s.photo %}<img class="store-photo" src="{{ s.photo }}" width="960" height="720" alt="Fachada da {{ s.name }}" loading="lazy" />{% endif %}
+      </div>
+      {% if s.address %}
+        <iframe class="map" title="Mapa da {{ s.name }}" loading="lazy" src="https://www.google.com/maps?q={{ (s.address + ', ' + (s.city or '') + ', RS') | urlencode }}&output=embed"></iframe>
+      {% endif %}
+    </section>
+  {% endif %}{% endfor %}
+</div>

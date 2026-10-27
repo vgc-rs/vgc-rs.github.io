@@ -1,0 +1,55 @@
+---
+layout: base.njk
+title: História
+permalink: /historia/
+milestones:
+  - { date: 2023-01-28, text: "Primeiro encontro do grupo." }
+  - { date: 2023-02-11, text: "1º Torneio.", detail: "Enquanto as lojas ainda não podiam fazer torneios pelo Play! Pokémon, o grupo organizou dez torneios não oficiais até setembro." }
+  - { date: 2023-05-06, text: "Primeira viagem em grupo, para o Regional de São Paulo." }
+  - { date: 2023-10-21, text: "1º Premier Challenge, na Ehpow Nerd.", detail: "Começam os torneios oficiais do Play! Pokémon." }
+  - { date: 2023-11-17, text: "LAIC 2024." }
+  - { date: 2024-05-25, text: "Primeiro MSS (Midseason Showdown), o Cup da época, na Nerdz Cards." }
+  - { date: 2024-07-13, text: "Primeiro League Challenge, no formato novo do Play! Pokémon." }
+  - { date: 2024-07-27, text: "Primeiro League Challenge na Nerdz Cards." }
+  - { date: 2024-11-15, text: "LAIC 2025." }
+  - { date: 2025-03-30, text: "Pokémon Day." }
+  - { date: 2026-04-25, text: "Creed's Cup." }
+---
+{% import "macros.njk" as m with context %}
+{% set posts = collections.eventsDesc %}
+{% set first = posts | last %}
+
+<h1 class="page-title">História</h1>
+
+<div class="history">
+  <div class="dialog-box">
+    <p>O VGC-RS reúne jogadores de Pokémon VGC do Rio Grande do Sul. O primeiro encontro foi em {{ first.date | longDate }}.</p>
+    <p>Desde então o grupo se encontra quase todo mês nas lojas para jogar os torneios oficiais do Play! Pokémon, e viaja junto para os Regionais, Internacionais e até o Worlds.</p>
+    <p>Até hoje foram {{ posts.length }} encontros, {{ posts | totalPhotos }} fotos e {{ posts | uniquePlayers }} nomes nas classificações.</p>
+  </div>
+
+  {% set firstPhoto = (first.date | photos)[4] %}
+  <figure class="history-photo">
+    <a href="{{ first.url }}"><img src="{{ firstPhoto.src }}" width="{{ firstPhoto.w }}" height="{{ firstPhoto.h }}" alt="O pessoal do primeiro encontro" /></a>
+    <figcaption>{{ first.data.title }}, {{ first.date | longDate }}</figcaption>
+  </figure>
+
+  <ol class="timeline">
+    {% for milestone in milestones %}
+      {% set post = posts | eventOn(milestone.date) %}
+      {% set photo = milestone.date | cover %}
+      {% if loop.first or (milestone.date | year) != (milestones[loop.index0 - 1].date | year) %}
+        <li class="timeline-year"><span>{{ milestone.date | year }}</span></li>
+      {% endif %}
+      <li class="timeline-item">
+        <div class="timeline-body">
+          <span class="timeline-date">{{ milestone.date | longDate }}</span>
+          <p class="timeline-text">{% if post %}<a href="{{ post.url }}">{{ milestone.text }}</a>{% else %}{{ milestone.text }}{% endif %}</p>
+          {% if milestone.detail %}<p class="timeline-detail">{{ milestone.detail }}</p>{% endif %}
+          {% if post %}{{ m.badges(post.data.types) }}{% endif %}
+        </div>
+        {% if photo and post %}<a class="timeline-photo" href="{{ post.url }}"><img src="{{ photo.thumb }}" width="{{ photo.tw }}" height="{{ photo.th }}" alt="" loading="lazy" /></a>{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</div>

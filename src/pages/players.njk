@@ -1,0 +1,41 @@
+---
+layout: base.njk
+title: Jogadores
+permalink: /jogadores/
+---
+{% import "macros.njk" as m with context %}
+{% set groups = collections.players | playerGroups(today) %}
+
+{% macro playerTile(p, wins) %}
+  <a class="tile" href="/jogadores/{{ p.slug }}/">
+    <span class="tile-photo player-photo">{{ m.playerPhoto(p) }}</span>
+    <strong class="tile-title">{{ p.display }}</strong>
+    {% if wins %}<span class="tile-meta">{{ wins | winCount }}</span>{% endif %}
+  </a>
+{% endmacro %}
+
+<h1 class="page-title">Jogadores <span class="count">- {{ collections.players.length }}</span></h1>
+
+{% for group in [["Hall of Fame Master", groups.champions], ["Hall of Fame Senior e Junior", groups.youthChampions]] %}
+  {% if group[1].length %}
+    <section class="year">
+      <h2 class="year-title">{{ group[0] }} <span class="count">- {{ group[1].length }}</span></h2>
+      <div class="tiles players">
+        {% for c in group[1] %}{{ playerTile(c.player, c.wins) }}{% endfor %}
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}
+
+{% for group in [["Jogaram Torneios Recentes", groups.recent], ["Não Vemos Há Algum Tempo", groups.others]] %}
+  {% if group[1].length %}
+    <section class="year">
+      <h2 class="year-title">{{ group[0] }} <span class="count">- {{ group[1].length }}</span></h2>
+      <div class="tiles players">
+        {% for p in group[1] %}{{ playerTile(p) }}{% endfor %}
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}
+
+<p class="page-note">Se você não quer aparecer nesta página, <a href="mailto:robson.luizv@gmail.com?subject=VGC-RS%20-%20Jogadores">mande um e-mail</a>.</p>

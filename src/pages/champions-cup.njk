@@ -1,0 +1,102 @@
+---
+layout: base.njk
+title: Copa dos Campeões 2027
+permalink: /copa-dos-campeoes/
+---
+{% import "macros.njk" as m with context %}
+
+<h1 class="page-title">Copa dos Campeões 2027</h1>
+
+<section class="cup-intro">
+  <div class="event-text">
+    <p>Ranking paralelo da temporada 2027 do VGC-RS, só com os torneios locais do RS. Em agosto de 2027 os melhores colocados disputam um mata-mata, e o vencedor leva um Winds & Waves, na versão que escolher, entregue no lançamento.</p>
+
+    <h2 class="year-title">Classificação</h2>
+    <ul>
+      <li>Os 7 primeiros do ranking.</li>
+      <li>O jogador de fora dos 7 que jogou mais torneios. Se houver empate, a vaga é sorteada.</li>
+    </ul>
+  </div>
+  <img class="cup-prize" src="/assets/winds-waves.webp" width="1000" height="750" alt="Pokémon Winds e Pokémon Waves" />
+  <div class="event-text">
+    <h2 class="year-title">Pontuação</h2>
+    <ul>
+      <li>Contam os League Challenges e League Cups desde 19 de setembro de 2026.</li>
+      <li>Em um torneio com N jogadores, o 1º lugar ganha N pontos, o 2º ganha N - 1 e assim por diante, até 1 ponto para o último.</li>
+      <li>Sem distinção de categoria: Master, Senior e Junior somam no mesmo ranking.</li>
+      <li>Em caso de empate em pontos, fica na frente quem jogou mais torneios.</li>
+    </ul>
+  </div>
+  <div class="event-text">
+    <h2 class="year-title">Final</h2>
+    <ul>
+      <li>Mata-mata presencial, num churrasco em uma data em que todos possam ir. Em caso de exceção, um jogador pode jogar online.</li>
+      <li>A participação é opcional e gratuita.</li>
+      <li>É uma brincadeira para incentivar os torneios locais. Qualquer problema com as regras será resolvido da melhor maneira possível, e melhorias ficam para a próxima edição.</li>
+      <li>Ranking e torneio não são oficiais e não têm vínculo com a The Pokémon Company.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="year">
+  <h2 class="year-title">Ranking</h2>
+  <div class="table-scroll">
+    <table class="standings">
+      <thead>
+        <tr>
+          <th class="pos">#</th>
+          <th>Jogador</th>
+          <th class="record">Torneios</th>
+          <th class="record">Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in ranking.players %}
+          {% set p = collections.players | playerNamed(r.name) %}
+          <tr class="{% if loop.index <= 7 %}champion{% endif %}">
+            <td class="pos">{{ r.place }}</td>
+            <td>{% if p %}<a href="/jogadores/{{ p.slug }}/">{{ p.display }}</a>{% else %}{{ r.name }}{% endif %}</td>
+            <td class="record">{{ r.tournaments }}</td>
+            <td class="record">{{ r.points }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="year">
+  <h2 class="year-title">Pontos por Torneio</h2>
+  <div class="table-scroll">
+    <table class="standings ranking-table">
+      <thead>
+        <tr>
+          <th class="pos">#</th>
+          <th>Jogador</th>
+          <th class="record">Total</th>
+          {% for t in ranking.tournaments %}
+            {% set post = collections.eventsDesc | eventOn(t.date) %}
+            {% set s = post.data.store | store(stores) if post.data.store else null %}
+            <th class="record">
+              <a href="{{ post.url }}">{{ post.date | day }} {{ post.date | month }}</a>
+              {{ m.badges([t.type]) }}
+              {% if s %}<span class="ranking-store">{{ s.name }}</span>{% endif %}
+              <span class="ranking-store">{{ t.players }} jogadores</span>
+            </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in ranking.players %}
+          {% set p = collections.players | playerNamed(r.name) %}
+          <tr>
+            <td class="pos">{{ r.place }}</td>
+            <td class="nowrap">{% if p %}<a href="/jogadores/{{ p.slug }}/">{{ p.display }}</a>{% else %}{{ r.name }}{% endif %}</td>
+            <td class="record"><strong>{{ r.points }}</strong></td>
+            {% for points in r.results %}<td class="record">{{ points if points !== null }}</td>{% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

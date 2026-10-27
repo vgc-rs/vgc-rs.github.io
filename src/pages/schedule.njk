@@ -1,0 +1,60 @@
+---
+layout: base.njk
+title: Agenda
+permalink: /agenda/
+---
+{% import "macros.njk" as m with context %}
+{% set next = schedule | upcoming(today) %}
+
+<h1 class="page-title">Agenda</h1>
+
+{% if next.length %}
+  <ol class="event-list">
+    {% for e in next %}
+      {% set s = e.store | store(stores) if e.store else null %}
+      <li>
+        <div class="event-row row-schedule">
+          <span class="date-block"><span class="date-day">{{ e.date | day }}</span><span class="date-month">{{ e.date | month }}</span></span>
+          <span class="row-info">
+            {{ m.badges(e.types) }}
+            <strong class="row-title">{{ e.title }}</strong>
+            <span class="event-meta">{{ e.date | longDate }}{% if e.time %}, {{ e.time }}{% endif %}{% if s %}, <a href="/lojas/#{{ s.id }}">{{ s.name }}</a>{% endif %}</span>
+          </span>
+          {% if e.signup %}<a class="button" href="{{ e.signup }}" target="_blank" rel="noopener">Inscrição</a>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+{% else %}
+  <p class="empty">Nenhum torneio marcado.</p>
+{% endif %}
+
+<section class="schedule-section event-text">
+  <h2 class="year-title">Como Participar</h2>
+  <ul>
+    <li>É só aparecer na loja no dia do torneio.</li>
+    <li>Os torneios geralmente têm taxa de inscrição, e o valor arrecadado volta para os jogadores em premiações.</li>
+    <li>A ficha do time (open team sheet) deve ser enviada antes para os juízes da loja. Ela pode ser gerada no <a href="https://vgcmulticalc.com/team-vs-many/" target="_blank" rel="noopener">VGC Multi Calc</a>.</li>
+    <li>Se você ainda não tem Player ID, ele é criado na loja.</li>
+    <li>Temos um grupo no WhatsApp. Para entrar, <a href="https://wa.me/5551981442804" target="_blank" rel="noopener">mande uma mensagem</a>.</li>
+  </ul>
+</section>
+
+<section class="schedule-section">
+  <h2 class="year-title">Últimos Realizados</h2>
+  <ol class="event-list">
+    {% for p in collections.eventsDesc %}{% if loop.index <= 4 %}
+      {% set s = p.data.store | store(stores) if p.data.store else null %}
+      <li>
+        <a class="event-row row-schedule" href="{{ p.url }}">
+          <span class="date-block"><span class="date-day">{{ p.date | day }}</span><span class="date-month">{{ p.date | month }}</span></span>
+          <span class="row-info">
+            {{ m.badges(p.data.types) }}
+            <strong class="row-title">{{ p.data.title }}</strong>
+            <span class="event-meta">{{ p.date | longDate }}{% if s %}, {{ s.name }}{% endif %}</span>
+          </span>
+        </a>
+      </li>
+    {% endif %}{% endfor %}
+  </ol>
+</section>

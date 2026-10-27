@@ -1,0 +1,87 @@
+---
+layout: base.njk
+bodyClass: event-page
+---
+{% import "macros.njk" as m with context %}
+{% set eventPhotos = page.date | photos %}
+{% set storeInfo = store | store(stores) if store else null %}
+{% set nav = collections.eventsDesc | neighbors(page.url) %}
+
+<header class="event-header">
+  <div class="date-block">
+    <span class="date-day">{{ page.date | day }}</span>
+    <span class="date-month">{{ page.date | month }} {{ page.date | year }}</span>
+  </div>
+  <div class="event-titles">
+    {{ m.badges(types) }}
+    <h1>{{ title }}</h1>
+    <p class="event-meta">
+      {{ page.date | longDate }}{% if storeInfo %}, {% if storeInfo.active %}<a href="/lojas/#{{ storeInfo.id }}">{{ storeInfo.name }}</a>{% else %}{{ storeInfo.name }}{% endif %}{% elif venue %}, {{ venue }}{% endif %}
+    </p>
+  </div>
+</header>
+
+<div class="event-body {% if not tournaments %}photos-only{% endif %}">
+  {% if tournaments %}
+    <section class="event-results" aria-label="Resultados">
+      {% for t in tournaments %}
+        <div class="tournament">
+          <h2>{{ eventTypes[t.type].name }}</h2>
+          {% for d in t.divisions %}
+            {% if t.divisions.length > 1 %}<h3>{{ d.name }}</h3>{% endif %}
+            {{ m.standingsTable(d) }}
+            {% if d.standings %}<a class="button button-secondary" href="{{ d.standings }}" target="_blank" rel="noopener" data-standings data-title="{{ eventTypes[t.type].name }} {{ d.name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
+          {% endfor %}
+          {% if t.standings %}<a class="button button-secondary" href="{{ t.standings }}" target="_blank" rel="noopener" data-standings data-title="{{ eventTypes[t.type].name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if content | trim %}
+    <section class="event-text">{{ content | safe }}</section>
+  {% endif %}
+
+  <section class="event-photos" id="fotos">
+    {% if tournaments %}<h2>Fotos</h2>{% endif %}
+    {% if eventPhotos.length %}
+      <div class="gallery" data-gallery>
+        {% for f in eventPhotos %}
+          <a href="{{ f.src }}" data-w="{{ f.w }}" data-h="{{ f.h }}">
+            <img src="{{ f.thumb }}" width="{{ f.tw }}" height="{{ f.th }}" alt="Foto {{ loop.index }} de {{ eventPhotos.length }}" loading="lazy" />
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty">Sem fotos deste encontro.</p>
+    {% endif %}
+  </section>
+
+  {% if videos %}
+    <section class="event-videos" id="videos">
+      <h2>{{ "Vídeos" if videos.length > 1 else "Vídeo" }}</h2>
+      {% for v in videos %}
+        <div class="video">
+          <iframe src="{{ v | youtubeEmbed }}" title="Vídeo {{ loop.index }} de {{ videos.length }}, {{ title }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+</div>
+
+<nav class="neighbors" aria-label="Outros encontros">
+  {% if nav.previous %}
+    <a class="neighbor" href="{{ nav.previous.url }}">
+      <span>Anterior</span>
+      <strong>{{ nav.previous.data.title }}</strong>
+      <span>{{ nav.previous.date | longDate }}</span>
+    </a>
+  {% else %}<span></span>{% endif %}
+  {% if nav.next %}
+    <a class="neighbor neighbor-next" href="{{ nav.next.url }}">
+      <span>Próximo</span>
+      <strong>{{ nav.next.data.title }}</strong>
+      <span>{{ nav.next.date | longDate }}</span>
+    </a>
+  {% endif %}
+</nav>

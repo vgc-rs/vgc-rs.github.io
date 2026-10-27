@@ -1,0 +1,50 @@
+{
+  "league-challenge": {
+    "name": "League Challenge",
+    "color": "grass"
+  },
+  "league-cup": {
+    "name": "League Cup",
+    "color": "fire"
+  },
+  "premier-challenge": {
+    "name": "Premier Challenge",
+    "color": "water"
+  },
+  "midseason-showdown": {
+    "name": "MSS",
+    "color": "electric"
+  },
+  "regional": {
+    "name": "Regional",
+    "color": "psychic"
+  },
+  "international": {
+    "name": "Internacional",
+    "color": "dragon"
+  },
+  "tournament": {
+    "name": "Torneio",
+    "color": "fighting"
+  },
+  "creeds-cup": {
+    "name": "Creed's Cup",
+    "color": "ghost"
+  },
+  "nerdz-league": {
+    "name": "Nerdz League",
+    "color": "rock"
+  },
+  "nerdz-cup": {
+    "name": "Nerdz Cup",
+    "color": "steel"
+  },
+  "pokemon-day": {
+    "name": "Pokémon Day",
+    "color": "fairy"
+  },
+  "meetup": {
+    "name": "Encontro",
+    "color": "normal"
+  }
+}

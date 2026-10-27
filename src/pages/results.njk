@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: Resultados
+permalink: /resultados/
+---
+{% import "macros.njk" as m with context %}
+
+<h1 class="page-title">Resultados</h1>
+
+{% for group in collections.eventsDesc | withResults | byYear %}
+  <section class="year">
+    <h2 class="year-title">{{ group.year }}</h2>
+    <div class="table-scroll">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Torneio</th>
+            <th>Loja</th>
+            <th class="num">Jogadores</th>
+            <th>Campeão</th>
+            <th>Vice</th>
+            <th>3º</th>
+            <th>4º</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in group.items %}
+            {% for t in p.data.tournaments %}
+              {% set pl = t.divisions[0].players %}
+              <tr>
+                <td class="nowrap"><a href="{{ p.url }}">{{ p.date | day }} {{ p.date | month }}</a></td>
+                <td>{{ m.badges([t.type]) }}</td>
+                <td>{% if p.data.store %}{{ (p.data.store | store(stores)).name }}{% endif %}</td>
+                <td class="num">{{ pl.length }}</td>
+                <td class="champion"><strong>{{ pl[0].name | displayName }}</strong></td>
+                <td>{{ pl[1].name | displayName if pl[1] }}</td>
+                <td>{{ pl[2].name | displayName if pl[2] }}</td>
+                <td>{{ pl[3].name | displayName if pl[3] }}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endfor %}

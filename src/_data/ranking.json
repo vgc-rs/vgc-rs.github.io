@@ -1,0 +1,461 @@
+{
+  "since": "2026-09-19",
+  "tournaments": [
+    {
+      "date": "2026-09-19",
+      "type": "league-challenge",
+      "players": 6
+    },
+    {
+      "date": "2026-09-19",
+      "type": "league-cup",
+      "players": 24
+    },
+    {
+      "date": "2026-09-26",
+      "type": "league-challenge",
+      "players": 12
+    },
+    {
+      "date": "2026-10-24",
+      "type": "league-challenge",
+      "players": 8
+    },
+    {
+      "date": "2026-10-24",
+      "type": "league-cup",
+      "players": 11
+    }
+  ],
+  "players": [
+    {
+      "place": 1,
+      "name": "Felipe Miller",
+      "points": 57,
+      "tournaments": 5,
+      "results": [
+        6,
+        24,
+        9,
+        8,
+        10
+      ]
+    },
+    {
+      "place": 2,
+      "name": "Andrei Fredes",
+      "points": 46,
+      "tournaments": 5,
+      "results": [
+        2,
+        23,
+        11,
+        3,
+        7
+      ]
+    },
+    {
+      "place": 3,
+      "name": "Wagner Dutra",
+      "points": 35,
+      "tournaments": 4,
+      "results": [
+        null,
+        13,
+        8,
+        6,
+        8
+      ]
+    },
+    {
+      "place": 4,
+      "name": "Gustavo Pereira",
+      "points": 31,
+      "tournaments": 2,
+      "results": [
+        null,
+        19,
+        12,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 5,
+      "name": "Paulo Gross",
+      "points": 24,
+      "tournaments": 3,
+      "results": [
+        4,
+        18,
+        null,
+        null,
+        2
+      ]
+    },
+    {
+      "place": 6,
+      "name": "Augusto Grovermann",
+      "points": 23,
+      "tournaments": 4,
+      "results": [
+        5,
+        9,
+        null,
+        5,
+        4
+      ]
+    },
+    {
+      "place": 7,
+      "name": "João Schopf",
+      "points": 22,
+      "tournaments": 1,
+      "results": [
+        null,
+        22,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 8,
+      "name": "Robson Bittencourt",
+      "points": 21,
+      "tournaments": 4,
+      "results": [
+        3,
+        6,
+        null,
+        1,
+        11
+      ]
+    },
+    {
+      "place": 9,
+      "name": "Lucas Di Mare",
+      "points": 21,
+      "tournaments": 2,
+      "results": [
+        null,
+        20,
+        null,
+        null,
+        1
+      ]
+    },
+    {
+      "place": 10,
+      "name": "Gustavo Felipe Sá Brito",
+      "points": 21,
+      "tournaments": 1,
+      "results": [
+        null,
+        21,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 11,
+      "name": "Rafael Costa",
+      "points": 17,
+      "tournaments": 1,
+      "results": [
+        null,
+        17,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 12,
+      "name": "Lucas Raupp",
+      "points": 16,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        7,
+        null,
+        9
+      ]
+    },
+    {
+      "place": 13,
+      "name": "Nicolas Camargo",
+      "points": 16,
+      "tournaments": 1,
+      "results": [
+        null,
+        16,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 14,
+      "name": "Matheus Martins",
+      "points": 15,
+      "tournaments": 1,
+      "results": [
+        null,
+        15,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 15,
+      "name": "Luiz Rosa",
+      "points": 14,
+      "tournaments": 2,
+      "results": [
+        null,
+        11,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 16,
+      "name": "Leonardo Ritter",
+      "points": 14,
+      "tournaments": 1,
+      "results": [
+        null,
+        14,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 17,
+      "name": "Rodrigo Peçanha",
+      "points": 12,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        null,
+        7,
+        5
+      ]
+    },
+    {
+      "place": 18,
+      "name": "João Mazoka",
+      "points": 12,
+      "tournaments": 1,
+      "results": [
+        null,
+        12,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 19,
+      "name": "Fernando Zanutto",
+      "points": 10,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        null,
+        4,
+        6
+      ]
+    },
+    {
+      "place": 20,
+      "name": "Eduardo Moreira",
+      "points": 10,
+      "tournaments": 1,
+      "results": [
+        null,
+        10,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 20,
+      "name": "Isaac Moreira",
+      "points": 10,
+      "tournaments": 1,
+      "results": [
+        null,
+        null,
+        10,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 22,
+      "name": "Lucas Leite",
+      "points": 9,
+      "tournaments": 2,
+      "results": [
+        null,
+        7,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 23,
+      "name": "Bruno Pessanha",
+      "points": 8,
+      "tournaments": 1,
+      "results": [
+        null,
+        8,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 24,
+      "name": "Leonel Kettenhuber",
+      "points": 6,
+      "tournaments": 2,
+      "results": [
+        1,
+        5,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 25,
+      "name": "Matheus Lima",
+      "points": 6,
+      "tournaments": 1,
+      "results": [
+        null,
+        null,
+        6,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 26,
+      "name": "Pedro Afonso",
+      "points": 5,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        null,
+        2,
+        3
+      ]
+    },
+    {
+      "place": 27,
+      "name": "Bento Ribeiro",
+      "points": 5,
+      "tournaments": 1,
+      "results": [
+        null,
+        null,
+        5,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 28,
+      "name": "Aurélio Almeida",
+      "points": 4,
+      "tournaments": 1,
+      "results": [
+        null,
+        4,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 28,
+      "name": "Felipe Ferreira",
+      "points": 4,
+      "tournaments": 1,
+      "results": [
+        null,
+        null,
+        4,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 30,
+      "name": "Lucas Gomes Moreira",
+      "points": 3,
+      "tournaments": 1,
+      "results": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 31,
+      "name": "Matheus Saueressig",
+      "points": 2,
+      "tournaments": 1,
+      "results": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 32,
+      "name": "Nina Araujo",
+      "points": 1,
+      "tournaments": 1,
+      "results": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "place": 32,
+      "name": "Pedro Dias",
+      "points": 1,
+      "tournaments": 1,
+      "results": [
+        null,
+        null,
+        1,
+        null,
+        null
+      ]
+    }
+  ]
+}

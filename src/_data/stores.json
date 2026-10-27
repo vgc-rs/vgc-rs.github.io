@@ -1,0 +1,5 @@
+[
+  { "id": "nerdz-cards", "name": "Nerdz Cards", "address": "Rua Sarmento Leite, 641, Centro Histórico", "city": "Porto Alegre", "instagram": "nerdzcards", "photo": "/assets/stores/nerdz-cards.webp", "active": true },
+  { "id": "ehpow-nerd", "name": "Ehpow Nerd", "address": "Rua Dom Pedro, 547", "city": "Esteio", "instagram": "ehpownerd", "photo": "/assets/stores/ehpow-nerd.webp", "active": true },
+  { "id": "fantasia", "name": "Fantasia", "address": null, "city": null, "instagram": null, "active": false }
+]

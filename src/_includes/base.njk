@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if title and page.url != "/" %}{{ title }} | {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ description or site.description }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+      <a class="brand" href="/">
+        <img src="/assets/logo.svg" alt="" width="40" height="40" />
+        <span>VGC-RS</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        {% set items = [["/", "Início"], ["/encontros/", "Encontros"], ["/resultados/", "Resultados"], ["/jogadores/", "Jogadores"], ["/copa-dos-campeoes/", "Copa dos Campeões"], ["/fotos/", "Fotos"], ["/agenda/", "Agenda"], ["/lojas/", "Lojas"], ["/historia/", "História"]] %}
+        {% for item in items %}
+          {% set active = (page.url == item[0]) or (item[0] != "/" and page.url.startsWith(item[0])) %}
+          <a href="{{ item[0] }}" {% if active %}aria-current="page"{% endif %}>{{ item[1] }}</a>
+        {% endfor %}
+      </nav>
+      </div>
+    </header>
+
+    <main class="container {{ bodyClass or '' }}">
+      {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer-inner">
+        <span class="footer-brand"><img src="/assets/logo.svg" alt="" width="24" height="24" /> VGC-RS</span>
+        <span>Pokémon VGC no Rio Grande do Sul desde 2023</span>
+        <span class="disclaimer">Pokémon e seus nomes são marcas da Nintendo, Game Freak e The Pokémon Company. Site feito por fãs, sem vínculo oficial.</span>
+      </div>
+    </footer>
+    <script src="/assets/gallery.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+---
+layout: base.njk
+title: Início
+---
+{% import "macros.njk" as m with context %}
+{% set posts = collections.eventsDesc %}
+{% set next = schedule | upcoming(today) %}
+
+<div class="with-sidebar">
+  <section class="feed" aria-label="Encontros recentes">
+    {% for p in posts %}{% if loop.index <= 10 %}
+      {{ m.postSummary(p) }}
+    {% endif %}{% endfor %}
+    <a class="button button-secondary" href="/encontros/">Todos os Encontros</a>
+  </section>
+
+  <aside class="sidebar">
+    <section class="panel">
+      <h2>Próximos Torneios</h2>
+      {% if next.length %}
+        <ul class="schedule-list">
+          {% for e in next %}{% if loop.index <= 4 %}
+            {% set s = e.store | store(stores) if e.store else null %}
+            <li>
+              <span class="date-block date-block-small"><span class="date-day">{{ e.date | day }}</span><span class="date-month">{{ e.date | month }}</span></span>
+              <span>
+                <strong>{{ e.title }}</strong>
+                <span class="event-meta">{% if s %}{{ s.name }}{% endif %}{% if e.time %}, {{ e.time }}{% endif %}</span>
+              </span>
+            </li>
+          {% endif %}{% endfor %}
+        </ul>
+      {% else %}
+        <p class="empty">Nenhum torneio marcado.</p>
+      {% endif %}
+      <a class="panel-link" href="/agenda/">Agenda</a>
+    </section>
+
+    <section class="panel">
+      <h2>Últimos Campeões</h2>
+      <ul class="champions-list">
+        {% for c in posts | latestChampions(6) %}
+          <li>
+            <a href="{{ c.post.url }}">
+              <strong class="champion-name">{{ c.player.name | displayName }}</strong>
+              <span class="event-meta">{{ eventTypes[c.tournament.type].name }}, {{ c.post.date | day }} {{ c.post.date | month }} {{ c.post.date | year }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <a class="panel-link" href="/resultados/">Resultados</a>
+    </section>
+
+    <section class="panel">
+      <h2>Lojas</h2>
+      <ul class="stores-mini">
+        {% for s in stores %}{% if s.active %}
+          <li>
+            <a href="/lojas/#{{ s.id }}">{{ s.name }}</a>
+          </li>
+        {% endif %}{% endfor %}
+      </ul>
+    </section>
+  </aside>
+</div>

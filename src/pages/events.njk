@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: Encontros
+permalink: /encontros/
+---
+{% import "macros.njk" as m with context %}
+
+<h1 class="page-title">Encontros</h1>
+
+{% set counts = collections.eventsDesc | countTypes %}
+<div class="filters" data-filters hidden>
+  <div class="filter-group" role="group" aria-label="Torneios" data-group="type">
+    <span class="filter-label">Torneios</span>
+    <button type="button" aria-pressed="true" data-value="">Todos <span>{{ collections.eventsDesc.length }}</span></button>
+    {% set grouped = { "league-challenge": "premier-challenge", "league-cup": "midseason-showdown" } %}
+    {% for id, type in eventTypes %}{% if counts[id] and id in ["league-challenge", "league-cup", "regional", "international"] %}
+      {% set extra = grouped[id] %}
+      <button type="button" aria-pressed="false" data-value="{{ id }}{% if extra %} {{ extra }}{% endif %}" class="filter-{{ type.color }}">{{ type.name }} <span>{{ counts[id] + ((counts[extra] or 0) if extra else 0) }}</span></button>
+    {% endif %}{% endfor %}
+    {% set common = ["league-challenge", "premier-challenge", "league-cup", "midseason-showdown", "regional", "international"] %}
+    {% set special = [] %}
+    {% for id, type in eventTypes %}{% if id not in common %}{% set special = (special.push(id), special) %}{% endif %}{% endfor %}
+    <button type="button" aria-pressed="false" data-value="{{ special | join(' ') }}" class="filter-special">Especiais <span>{{ (collections.eventsDesc | withAnyType(special)).length }}</span></button>
+  </div>
+  <div class="filter-group" role="group" aria-label="Lojas" data-group="store">
+    <span class="filter-label">Lojas</span>
+    <button type="button" aria-pressed="true" data-value="">Todas <span>{{ collections.eventsDesc.length }}</span></button>
+    {% for s in stores %}{% if s.active %}
+      <button type="button" aria-pressed="false" data-value="{{ s.id }}" class="filter-store">{{ s.name }} <span>{{ (collections.eventsDesc | fromStore(s.id)).length }}</span></button>
+    {% endif %}{% endfor %}
+  </div>
+  <p class="filter-empty" hidden>Nenhum encontro com esses filtros.</p>
+</div>
+
+{% for group in collections.eventsDesc | byYear %}
+  <section class="year">
+    <h2 class="year-title">{{ group.year }}</h2>
+    <div class="feed">
+      {% for p in group.items %}{{ m.postSummary(p) }}{% endfor %}
+    </div>
+  </section>
+{% endfor %}
