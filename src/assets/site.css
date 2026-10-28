@@ -155,14 +155,14 @@ main {
 .site-header-inner {
   display: flex;
   align-items: stretch;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   flex-wrap: wrap;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   color: inherit;
   text-decoration: none;
   font-weight: 900;
@@ -175,6 +175,17 @@ main {
 .brand img {
   width: 34px;
   height: 34px;
+}
+
+.brand .brand-mascot {
+  width: auto;
+  height: auto;
+  align-self: flex-end;
+  margin-top: calc(var(--space-sm) * -1);
+  margin-bottom: calc((var(--space-xl) + var(--space-2xs)) * -1);
+  image-rendering: pixelated;
+  position: relative;
+  z-index: 1;
 }
 
 .menu {
@@ -190,7 +201,7 @@ main {
   text-decoration: none;
   font-weight: 700;
   font-size: var(--font-size-sm);
-  padding: 0 var(--space-md) 0 var(--space-lg);
+  padding: 0 var(--space-sm) 0 calc(var(--space-md) + var(--space-2xs));
   position: relative;
 }
 
@@ -201,7 +212,7 @@ main {
 .menu a::before {
   content: "▶";
   position: absolute;
-  left: var(--space-xs);
+  left: var(--space-2xs);
   top: 50%;
   transform: translateY(-50%);
   font-size: var(--font-size-cursor);
@@ -1299,6 +1310,11 @@ main {
 
   .site-header-inner {
     gap: 0;
+  }
+
+  .brand .brand-mascot {
+    height: var(--space-3xl);
+    margin: 0;
   }
 
   .menu {
