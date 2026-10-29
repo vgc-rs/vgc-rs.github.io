@@ -1579,3 +1579,21 @@ a.row-schedule:hover {
 .filters button.filter-steel[aria-pressed="true"] { background: var(--type-steel); border-color: var(--type-steel); color: var(--on-dark); }
 .filters button.filter-store[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-dark); }
 .filters button.filter-special[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+
+.social-avatar {
+  width: calc(var(--space-xl) + var(--space-md));
+  height: calc(var(--space-xl) + var(--space-md));
+  border-radius: 50%;
+  border: var(--border-thin) solid var(--on-dark);
+}
+
+.social-list {
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  align-items: center;
+  gap: var(--space-lg) var(--space-sm);
+}
+
+.social-list .social-link {
+  display: contents;
+}
