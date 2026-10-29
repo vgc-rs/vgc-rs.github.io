@@ -22,7 +22,7 @@
   { "name": "Isaac Moreira", "aliases": [], "photo": "/assets/players/isaac-moreira.webp", "majors": [{ "place": "Campeão", "events": ["NAIC 2025", "Regional Santiago 2026"] }, { "place": "Vice", "events": ["Regional Joinville 2025", "Regional Belo Horizonte 2026"] }, { "place": "Top 4", "events": ["NAIC 2026", "Regional Rio de Janeiro 2025", "Regional Campinas 2026"] }, { "place": "Top 8", "events": ["LAIC 2025"] }, { "place": "Top 16", "events": ["EUIC 2025"] }] },
   { "name": "João Mazoka", "aliases": [], "photo": "/assets/players/joao-mazoka.webp" },
   { "name": "Jonas Silva", "aliases": [], "photo": "/assets/players/jonas-silva.webp" },
-  { "name": "Jorginho O Jorgador", "nickname": "Jorginho", "aliases": [], "photo": "/assets/players/jorginho.webp" },
+  { "name": "Jorginho O Jorgador", "nickname": "Jorginho", "aliases": [], "photo": "/assets/players/jorginho.webp", "majors": [{ "place": "Top 4", "events": ["Regional Santiago 2022"] }] },
   { "name": "João Garcia", "aliases": [], "photo": "/assets/players/joao-garcia.webp" },
   { "name": "João Schopf", "aliases": ["João"], "photo": "/assets/players/joao-schopf.webp" },
   { "name": "Ju Dantas", "aliases": [], "photo": null, "hidden": true },
