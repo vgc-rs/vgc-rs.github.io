@@ -71,8 +71,8 @@ permalink: /copa-dos-campeoes/
     <table class="standings ranking-table">
       <thead>
         <tr>
-          <th class="pos">#</th>
-          <th>Jogador</th>
+          <th class="pos frozen">#</th>
+          <th class="frozen frozen-name">Jogador</th>
           <th class="record">Total</th>
           {% for t in ranking.tournaments %}
             {% set post = collections.eventsDesc | eventOn(t.date) %}
@@ -90,8 +90,8 @@ permalink: /copa-dos-campeoes/
         {% for r in ranking.players %}
           {% set p = collections.players | playerNamed(r.name) %}
           <tr>
-            <td class="pos">{{ r.place }}</td>
-            <td class="nowrap">{% if p %}<a href="/jogadores/{{ p.slug }}/">{{ p.display }}</a>{% else %}{{ r.name }}{% endif %}</td>
+            <td class="pos frozen">{{ r.place }}</td>
+            <td class="nowrap frozen frozen-name">{% if p %}<a href="/jogadores/{{ p.slug }}/">{{ p.display }}</a>{% else %}{{ r.name }}{% endif %}</td>
             <td class="record"><strong>{{ r.points }}</strong></td>
             {% for points in r.results %}<td class="record">{{ points if points !== null }}</td>{% endfor %}
           </tr>

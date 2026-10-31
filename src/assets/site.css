@@ -880,6 +880,22 @@ main {
   vertical-align: bottom;
 }
 
+.ranking-table .frozen {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface);
+}
+
+.ranking-table .pos.frozen {
+  width: var(--space-3xl);
+  min-width: var(--space-3xl);
+}
+
+.ranking-table .frozen-name {
+  left: var(--space-3xl);
+}
+
 .ranking-table th .badges {
   display: block;
   margin: var(--space-2xs) 0;
