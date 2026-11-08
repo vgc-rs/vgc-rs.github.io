@@ -25,7 +25,7 @@ title: Início
               <span class="date-block date-block-small"><span class="date-day">{{ e.date | day }}</span><span class="date-month">{{ e.date | month }}</span></span>
               <span>
                 <strong>{{ e.title }}</strong>
-                <span class="event-meta">{% if s %}{{ s.name }}{% endif %}{% if e.time %}, {{ e.time }}{% endif %}</span>
+                <span class="event-meta">{% if e.end %}{{ e.date | day }} a {{ e.end | day }} de {{ e.end | month }}{% endif %}{% if s %}{{ s.name }}{% endif %}{% if e.time %}, {{ e.time }}{% endif %}</span>
               </span>
             </li>
           {% endif %}{% endfor %}

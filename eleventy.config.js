@@ -169,7 +169,7 @@ export default function (config) {
 
     return names.size
   })
-  config.addFilter("upcoming", (events, today) => events.filter(e => e.date >= today).sort((a, b) => a.date.localeCompare(b.date)))
+  config.addFilter("upcoming", (events, today) => events.filter(e => (e.end ?? e.date) >= today).sort((a, b) => a.date.localeCompare(b.date)))
   config.addFilter("neighbors", (posts, url) => {
     const i = posts.findIndex(p => p.url === url)
 

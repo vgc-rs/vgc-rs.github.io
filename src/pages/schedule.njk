@@ -18,7 +18,7 @@ permalink: /agenda/
           <span class="row-info">
             {{ m.badges(e.types) }}
             <strong class="row-title">{{ e.title }}</strong>
-            <span class="event-meta">{{ e.date | longDate }}{% if e.time %}, {{ e.time }}{% endif %}{% if s %}, <a href="/lojas/#{{ s.id }}">{{ s.name }}</a>{% endif %}</span>
+            <span class="event-meta">{% if e.end %}{{ e.date | day }} a {{ e.end | longDate }}{% else %}{{ e.date | longDate }}{% endif %}{% if e.time %}, {{ e.time }}{% endif %}{% if s %}, <a href="/lojas/#{{ s.id }}">{{ s.name }}</a>{% endif %}</span>
           </span>
           {% if e.signup %}<a class="button" href="{{ e.signup }}" target="_blank" rel="noopener">Inscrição</a>{% endif %}
         </div>
