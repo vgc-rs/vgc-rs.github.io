@@ -69,7 +69,7 @@ eleventyComputed:
             <td class="nowrap"><a href="{{ e.post.url }}">{{ e.post.date | day }} {{ e.post.date | month }} {{ e.post.date | year }}</a></td>
             <td>{{ m.badges([e.tournament.type]) }}</td>
             <td>{% if s %}{{ s.name }}{% endif %}</td>
-            <td class="pos">{{ e.place }}º</td>
+            <td class="pos">{% if e.place %}{{ e.place }}º{% endif %}</td>
             <td class="record">{{ e.record }}</td>
           </tr>
         {% endfor %}

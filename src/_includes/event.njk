@@ -30,9 +30,9 @@ bodyClass: event-page
           {% for d in t.divisions %}
             {% if t.divisions.length > 1 %}<h3>{{ d.name }}</h3>{% endif %}
             {{ m.standingsTable(d) }}
-            {% if d.standings %}<a class="button button-secondary" href="{{ d.standings }}" target="_blank" rel="noopener" data-standings data-title="{{ eventTypes[t.type].name }} {{ d.name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
+            {% if d.standings %}<a class="button button-secondary" href="{{ d.standings }}" target="_blank" rel="noopener" data-standings{% if d.bracket %} data-bracket="{{ d.bracket }}"{% endif %} data-title="{{ eventTypes[t.type].name }} {{ d.name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
           {% endfor %}
-          {% if t.standings %}<a class="button button-secondary" href="{{ t.standings }}" target="_blank" rel="noopener" data-standings data-title="{{ eventTypes[t.type].name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
+          {% if t.standings %}<a class="button button-secondary" href="{{ t.standings }}" target="_blank" rel="noopener" data-standings{% if t.bracket %} data-bracket="{{ t.bracket }}"{% endif %} data-title="{{ eventTypes[t.type].name }}, {{ page.date | longDate }}">Ver Standings</a>{% endif %}
         </div>
       {% endfor %}
     </section>

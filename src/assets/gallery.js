@@ -81,6 +81,8 @@ if (standingsButtons.length) {
       const url = button.getAttribute("href")
       title.textContent = button.dataset.title
       body.innerHTML = url.toLowerCase().endsWith(".pdf") ? `<iframe src="${url}" title="Standings"></iframe>` : `<img src="${url}" alt="Standings" />`
+
+      if (button.dataset.bracket) body.insertAdjacentHTML("beforeend", `<img src="${button.dataset.bracket}" alt="Bracket" />`)
       modal.showModal()
     })
   )
