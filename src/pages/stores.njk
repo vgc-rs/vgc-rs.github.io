@@ -3,6 +3,7 @@ layout: base.njk
 title: Lojas
 permalink: /lojas/
 ---
+{% import "macros.njk" as m with context %}
 <h1 class="page-title">Lojas</h1>
 
 <section class="event-text">
@@ -21,9 +22,20 @@ permalink: /lojas/
         </div>
         {% if s.photo %}<img class="store-photo" src="{{ s.photo }}" width="960" height="720" alt="Fachada da {{ s.name }}" loading="lazy" />{% endif %}
       </div>
-      {% if s.address %}
-        <iframe class="map" title="Mapa da {{ s.name }}" loading="lazy" src="https://www.google.com/maps?q={{ (s.address + ', ' + (s.city or '') + ', RS') | urlencode }}&output=embed"></iframe>
-      {% endif %}
+      <div class="store-side">
+        {% if s.organizer %}
+          <div class="organizer">
+            <span class="player-photo">{{ m.playerPhoto(s.organizer) }}</span>
+            <div class="organizer-info">
+              <span class="organizer-role">Organizador</span>
+              <strong class="organizer-name">{{ s.organizer.name }}</strong>
+            </div>
+          </div>
+        {% endif %}
+        {% if s.address %}
+          <iframe class="map" title="Mapa da {{ s.name }}" loading="lazy" src="https://www.google.com/maps?q={{ (s.address + ', ' + (s.city or '') + ', RS') | urlencode }}&output=embed"></iframe>
+        {% endif %}
+      </div>
     </section>
   {% endif %}{% endfor %}
 </div>
