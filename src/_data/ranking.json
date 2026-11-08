@@ -30,67 +30,106 @@
       "date": "2026-10-31",
       "type": "league-challenge",
       "players": 14
+    },
+    {
+      "date": "2026-11-07",
+      "type": "league-challenge",
+      "players": 12
     }
   ],
   "players": [
     {
       "place": 1,
       "name": "Felipe Miller",
-      "points": 61,
-      "tournaments": 6,
+      "points": 66,
+      "tournaments": 7,
       "results": [
         6,
         24,
         9,
         8,
         10,
-        4
+        4,
+        5
       ]
     },
     {
       "place": 2,
       "name": "Andrei Fredes",
-      "points": 54,
-      "tournaments": 6,
+      "points": 56,
+      "tournaments": 7,
       "results": [
         2,
         23,
         11,
         3,
         7,
-        8
+        8,
+        2
       ]
     },
     {
       "place": 3,
       "name": "Wagner Dutra",
-      "points": 46,
-      "tournaments": 5,
+      "points": 52,
+      "tournaments": 6,
       "results": [
         null,
         13,
         8,
         6,
         8,
-        11
+        11,
+        6
       ]
     },
     {
       "place": 4,
       "name": "João Schopf",
-      "points": 35,
-      "tournaments": 2,
+      "points": 44,
+      "tournaments": 3,
       "results": [
         null,
         22,
         null,
         null,
         null,
-        13
+        13,
+        9
       ]
     },
     {
       "place": 5,
+      "name": "Gustavo Pereira",
+      "points": 39,
+      "tournaments": 3,
+      "results": [
+        null,
+        19,
+        12,
+        null,
+        null,
+        null,
+        8
+      ]
+    },
+    {
+      "place": 5,
+      "name": "Leonardo Ritter",
+      "points": 39,
+      "tournaments": 3,
+      "results": [
+        null,
+        14,
+        null,
+        null,
+        null,
+        14,
+        11
+      ]
+    },
+    {
+      "place": 7,
       "name": "Augusto Grovermann",
       "points": 32,
       "tournaments": 5,
@@ -100,11 +139,12 @@
         null,
         5,
         4,
-        9
+        9,
+        null
       ]
     },
     {
-      "place": 6,
+      "place": 8,
       "name": "Lucas Di Mare",
       "points": 31,
       "tournaments": 3,
@@ -114,25 +154,12 @@
         null,
         null,
         1,
-        10
-      ]
-    },
-    {
-      "place": 7,
-      "name": "Gustavo Pereira",
-      "points": 31,
-      "tournaments": 2,
-      "results": [
-        null,
-        19,
-        12,
-        null,
-        null,
+        10,
         null
       ]
     },
     {
-      "place": 8,
+      "place": 9,
       "name": "Gustavo Felipe Sá Brito",
       "points": 28,
       "tournaments": 2,
@@ -142,25 +169,27 @@
         null,
         null,
         null,
-        7
-      ]
-    },
-    {
-      "place": 8,
-      "name": "Leonardo Ritter",
-      "points": 28,
-      "tournaments": 2,
-      "results": [
-        null,
-        14,
-        null,
-        null,
-        null,
-        14
+        7,
+        null
       ]
     },
     {
       "place": 10,
+      "name": "Robson Bittencourt",
+      "points": 25,
+      "tournaments": 5,
+      "results": [
+        3,
+        6,
+        null,
+        1,
+        11,
+        null,
+        4
+      ]
+    },
+    {
+      "place": 11,
       "name": "Paulo Gross",
       "points": 24,
       "tournaments": 3,
@@ -170,11 +199,27 @@
         null,
         null,
         2,
+        null,
         null
       ]
     },
     {
-      "place": 11,
+      "place": 12,
+      "name": "Jorginho O Jorgador",
+      "points": 22,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        12,
+        10
+      ]
+    },
+    {
+      "place": 12,
       "name": "Rafael Costa",
       "points": 22,
       "tournaments": 2,
@@ -184,25 +229,12 @@
         null,
         null,
         null,
-        5
-      ]
-    },
-    {
-      "place": 12,
-      "name": "Robson Bittencourt",
-      "points": 21,
-      "tournaments": 4,
-      "results": [
-        3,
-        6,
-        null,
-        1,
-        11,
+        5,
         null
       ]
     },
     {
-      "place": 13,
+      "place": 14,
       "name": "Matheus Martins",
       "points": 17,
       "tournaments": 2,
@@ -212,11 +244,12 @@
         null,
         null,
         null,
-        2
+        2,
+        null
       ]
     },
     {
-      "place": 13,
+      "place": 14,
       "name": "Nicolas Camargo",
       "points": 17,
       "tournaments": 2,
@@ -226,11 +259,12 @@
         null,
         null,
         null,
-        1
+        1,
+        null
       ]
     },
     {
-      "place": 15,
+      "place": 16,
       "name": "Lucas Raupp",
       "points": 16,
       "tournaments": 2,
@@ -240,11 +274,12 @@
         7,
         null,
         9,
+        null,
         null
       ]
     },
     {
-      "place": 16,
+      "place": 17,
       "name": "Luiz Rosa",
       "points": 14,
       "tournaments": 2,
@@ -254,11 +289,42 @@
         3,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 17,
+      "place": 18,
+      "name": "Fernando Zanutto",
+      "points": 13,
+      "tournaments": 3,
+      "results": [
+        null,
+        null,
+        null,
+        4,
+        6,
+        null,
+        3
+      ]
+    },
+    {
+      "place": 19,
+      "name": "Jean Krummenauer",
+      "points": 13,
+      "tournaments": 2,
+      "results": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        6,
+        7
+      ]
+    },
+    {
+      "place": 20,
       "name": "Rodrigo Peçanha",
       "points": 12,
       "tournaments": 2,
@@ -268,11 +334,12 @@
         null,
         7,
         5,
+        null,
         null
       ]
     },
     {
-      "place": 18,
+      "place": 21,
       "name": "João Mazoka",
       "points": 12,
       "tournaments": 1,
@@ -282,15 +349,17 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 18,
-      "name": "Jorginho O Jorgador",
+      "place": 21,
+      "name": "Renan Magnani",
       "points": 12,
       "tournaments": 1,
       "results": [
+        null,
         null,
         null,
         null,
@@ -300,21 +369,7 @@
       ]
     },
     {
-      "place": 20,
-      "name": "Fernando Zanutto",
-      "points": 10,
-      "tournaments": 2,
-      "results": [
-        null,
-        null,
-        null,
-        4,
-        6,
-        null
-      ]
-    },
-    {
-      "place": 21,
+      "place": 23,
       "name": "Eduardo Moreira",
       "points": 10,
       "tournaments": 1,
@@ -324,11 +379,12 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 21,
+      "place": 23,
       "name": "Isaac Moreira",
       "points": 10,
       "tournaments": 1,
@@ -338,11 +394,12 @@
         10,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 23,
+      "place": 25,
       "name": "Lucas Leite",
       "points": 9,
       "tournaments": 2,
@@ -352,11 +409,12 @@
         2,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 24,
+      "place": 26,
       "name": "Bruno Pessanha",
       "points": 8,
       "tournaments": 1,
@@ -366,11 +424,27 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 25,
+      "place": 27,
+      "name": "Pedro Afonso",
+      "points": 6,
+      "tournaments": 3,
+      "results": [
+        null,
+        null,
+        null,
+        2,
+        3,
+        null,
+        1
+      ]
+    },
+    {
+      "place": 28,
       "name": "Leonel Kettenhuber",
       "points": 6,
       "tournaments": 2,
@@ -380,25 +454,12 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 26,
-      "name": "Jean Krummenauer",
-      "points": 6,
-      "tournaments": 1,
-      "results": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        6
-      ]
-    },
-    {
-      "place": 26,
+      "place": 29,
       "name": "Matheus Lima",
       "points": 6,
       "tournaments": 1,
@@ -408,25 +469,12 @@
         6,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 28,
-      "name": "Pedro Afonso",
-      "points": 5,
-      "tournaments": 2,
-      "results": [
-        null,
-        null,
-        null,
-        2,
-        3,
-        null
-      ]
-    },
-    {
-      "place": 29,
+      "place": 30,
       "name": "Bento Ribeiro",
       "points": 5,
       "tournaments": 1,
@@ -436,11 +484,12 @@
         5,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 30,
+      "place": 31,
       "name": "Nina Araujo",
       "points": 4,
       "tournaments": 2,
@@ -450,11 +499,12 @@
         null,
         null,
         null,
-        3
+        3,
+        null
       ]
     },
     {
-      "place": 31,
+      "place": 32,
       "name": "Aurélio Almeida",
       "points": 4,
       "tournaments": 1,
@@ -464,11 +514,12 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 31,
+      "place": 32,
       "name": "Felipe Ferreira",
       "points": 4,
       "tournaments": 1,
@@ -478,11 +529,12 @@
         4,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 33,
+      "place": 34,
       "name": "Lucas Gomes Moreira",
       "points": 3,
       "tournaments": 1,
@@ -492,11 +544,12 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 34,
+      "place": 35,
       "name": "Matheus Saueressig",
       "points": 2,
       "tournaments": 1,
@@ -506,11 +559,12 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
     {
-      "place": 35,
+      "place": 36,
       "name": "Pedro Dias",
       "points": 1,
       "tournaments": 1,
@@ -518,6 +572,7 @@
         null,
         null,
         1,
+        null,
         null,
         null,
         null
