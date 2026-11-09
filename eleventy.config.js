@@ -62,6 +62,87 @@ function buildPlayers(events) {
   return [...players.values()].filter(p => !hidden.has(p.name)).sort((a, b) => b.wins.length - a.wins.length || a.display.localeCompare(b.display, "pt-BR"))
 }
 
+const RANKING_MIN = 4
+const RANKING_Z = 1.96
+const RANKING_PRESENCE = 0.2
+
+function wilson(wins, matches) {
+  const p = wins / matches
+  const z = RANKING_Z
+
+  return (p + (z * z) / (2 * matches) - z * Math.sqrt((p * (1 - p)) / matches + (z * z) / (4 * matches * matches))) / (1 + (z * z) / matches)
+}
+
+function rankingRows(entries, total) {
+  return [...entries.values()]
+    .map(o => {
+      const matches = o.wins + o.losses
+      const presence = o.tournaments.size / total
+
+      return { ...o, matches, tournaments: o.tournaments.size, years: o.years.size, last: o.last.size, ratio: o.wins / matches, consistency: (1 - RANKING_PRESENCE) * wilson(o.wins, matches) + RANKING_PRESENCE * presence }
+    })
+    .sort((a, b) => b.consistency - a.consistency || b.tournaments - a.tournaments)
+}
+
+function buildRankings(events) {
+  const registry = readRegistry()
+  const canonical = byOfficialName(registry)
+  const hidden = new Set(registry.filter(p => p.hidden).map(p => p.name))
+  const results = []
+  const totals = new Map()
+
+  for (const post of events) {
+    const year = post.date.getUTCFullYear()
+
+    for (const tournament of post.data.tournaments ?? []) {
+      const key = `${post.url}${tournament.type}`
+      let counted = false
+
+      for (const division of tournament.divisions) {
+        for (const entry of division.players) {
+          const record = /^(\d+)-(\d+)-(\d+)$/.exec(entry.record ?? "")
+
+          if (!record) continue
+
+          const info = canonical.get(entry.name)
+          const name = info?.name ?? entry.name
+
+          if (hidden.has(name)) continue
+
+          counted = true
+          results.push({ year, key, name, display: info?.nickname ?? name, slug: slugify(info?.nickname ?? name), wins: Number(record[1]), losses: Number(record[2]) })
+        }
+      }
+
+      if (counted) totals.set(year, (totals.get(year) ?? 0) + 1)
+    }
+  }
+
+  const lastYear = Math.max(...totals.keys())
+  const collect = (filter, total) => {
+    const entries = new Map()
+
+    for (const r of results.filter(filter)) {
+      if (!entries.has(r.name)) entries.set(r.name, { name: r.name, display: r.display, slug: r.slug, wins: 0, losses: 0, tournaments: new Set(), years: new Set(), last: new Set() })
+
+      const e = entries.get(r.name)
+      e.wins += r.wins
+      e.losses += r.losses
+      e.tournaments.add(r.key)
+      e.years.add(r.year)
+
+      if (r.year === lastYear) e.last.add(r.key)
+    }
+
+    return rankingRows(entries, total)
+  }
+  const total = [...totals.values()].reduce((a, b) => a + b, 0)
+  const general = collect(() => true, total).filter(o => o.last >= RANKING_MIN && (o.tournaments >= RANKING_MIN * o.years || o.consistency > 0.5))
+  const years = [...totals.keys()].sort((a, b) => b - a).map(year => ({ year, total: totals.get(year), players: collect(r => r.year === year, totals.get(year)).filter(o => o.tournaments >= RANKING_MIN) }))
+
+  return { lastYear, general: { total, players: general }, years }
+}
+
 function seconds(time) {
   if (!time) return 0
   if (/^\d+$/.test(time)) return Number(time)
@@ -102,6 +183,7 @@ export default function (config) {
 
   config.addCollection("eventsDesc", api => api.getFilteredByTag("events").sort((a, b) => b.date - a.date))
   config.addCollection("players", api => buildPlayers(api.getFilteredByTag("events").sort((a, b) => b.date - a.date)))
+  config.addCollection("rankings", api => [buildRankings(api.getFilteredByTag("events"))])
 
   config.addFilter("displayName", name => registry.get(name)?.nickname ?? name)
   config.addFilter("youtubeEmbed", youtubeEmbed)
@@ -136,6 +218,7 @@ export default function (config) {
     }
   })
   config.addFilter("playerNamed", (players, name) => players.find(p => p.name === name))
+  config.addFilter("percent", n => `${(n * 100).toFixed(1).replace(".", ",")}%`)
   config.addFilter("winCount", n => (n === 1 ? "1 vitória" : `${n} vitórias`))
   config.addFilter("champions", champions)
   config.addFilter("latestChampions", (posts, limit) => posts.flatMap(post => champions(post).map(c => ({ ...c, post }))).slice(0, limit))

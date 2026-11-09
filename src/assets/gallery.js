@@ -136,3 +136,22 @@ if (filters) {
 
   filters.hidden = false
 }
+
+document.querySelectorAll("[data-sortable]").forEach(table => {
+  const body = table.querySelector("tbody")
+  const headers = [...table.querySelectorAll("th")]
+
+  table.querySelectorAll("[data-sort]").forEach(button =>
+    button.addEventListener("click", () => {
+      const th = button.closest("th")
+      const direction = th.getAttribute("aria-sort") === "descending" ? "ascending" : "descending"
+      const key = button.dataset.sort
+      const sign = direction === "descending" ? -1 : 1
+      const rows = [...body.rows].sort((a, b) => sign * (Number(a.dataset[key]) - Number(b.dataset[key])) || Number(b.dataset.consistency) - Number(a.dataset.consistency))
+
+      headers.forEach(h => h.removeAttribute("aria-sort"))
+      th.setAttribute("aria-sort", direction)
+      body.append(...rows)
+    })
+  )
+})

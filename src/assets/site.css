@@ -153,6 +153,7 @@ main {
 }
 
 .site-header-inner {
+  max-width: calc(var(--container) + var(--space-3xl) * 2 + var(--gutter) * 2);
   display: flex;
   align-items: stretch;
   gap: var(--space-lg);
@@ -894,6 +895,29 @@ main {
 
 .ranking-table .frozen-name {
   left: var(--space-3xl);
+}
+
+.ranking-table th button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ranking-table th button:hover {
+  text-decoration: underline;
+}
+
+.ranking-table th[aria-sort] button::after {
+  content: " ▼";
+  font-size: var(--font-size-cursor);
+}
+
+.ranking-table th[aria-sort="ascending"] button::after {
+  content: " ▲";
 }
 
 .ranking-table th .badges {

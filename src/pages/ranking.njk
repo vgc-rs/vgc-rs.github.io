@@ -1,0 +1,63 @@
+---
+layout: base.njk
+title: Ranking
+permalink: /ranking/
+---
+{% set rankings = collections.rankings[0] %}
+
+{% macro rankingTable(players, total) %}
+  <div class="table-scroll">
+    <table class="standings ranking-table" data-sortable>
+      <thead>
+        <tr>
+          <th class="pos">#</th>
+          <th>Jogador</th>
+          <th class="record" aria-sort="descending"><button type="button" data-sort="consistency">Consistência</button></th>
+          <th class="record"><button type="button" data-sort="ratio">Ratio</button></th>
+          <th class="record"><button type="button" data-sort="matches">Partidas</button></th>
+          <th class="record"><button type="button" data-sort="wins">Vitórias</button></th>
+          <th class="record"><button type="button" data-sort="losses">Derrotas</button></th>
+          <th class="record"><button type="button" data-sort="tournaments">Torneios</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in players %}
+          <tr class="{% if loop.first %}champion{% endif %}" data-consistency="{{ r.consistency }}" data-ratio="{{ r.ratio }}" data-matches="{{ r.matches }}" data-wins="{{ r.wins }}" data-losses="{{ r.losses }}" data-tournaments="{{ r.tournaments }}">
+            <td class="pos">{{ loop.index }}</td>
+            <td class="nowrap"><a href="/jogadores/{{ r.slug }}/">{{ r.display }}</a></td>
+            <td class="record"><strong>{{ r.consistency | percent }}</strong></td>
+            <td class="record">{{ r.ratio | percent }}</td>
+            <td class="record">{{ r.matches }}</td>
+            <td class="record">{{ r.wins }}</td>
+            <td class="record">{{ r.losses }}</td>
+            <td class="record">{{ r.tournaments }} de {{ total }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endmacro %}
+
+<h1 class="page-title">Ranking</h1>
+
+<section class="event-text">
+  <ul>
+    <li>Considera <strong>só os torneios com placar</strong>, de todas as categorias.</li>
+    <li>A ordem é pela Consistência, que junta o desempenho nas partidas (peso de 80%) com a presença nos torneios (peso de 20%). Quem jogou mais partidas e mais torneios tem um resultado mais confiável e fica na frente.</li>
+    <li>No geral, entra quem jogou pelo menos 4 torneios em {{ rankings.lastYear }} e participa com frequência ou tem uma Consistência alta. No ranking de cada ano, entra quem jogou pelo menos 4 torneios no ano.</li>
+  </ul>
+</section>
+
+<section class="year">
+  <h2 class="year-title">Geral</h2>
+  {{ rankingTable(rankings.general.players, rankings.general.total) }}
+</section>
+
+{% for y in rankings.years %}
+  {% if y.players.length %}
+    <section class="year">
+      <h2 class="year-title">{{ y.year }}</h2>
+      {{ rankingTable(y.players, y.total) }}
+    </section>
+  {% endif %}
+{% endfor %}
