@@ -883,7 +883,7 @@ main {
 
 .ranking-table .frozen {
   position: sticky;
-  left: 0;
+  left: calc(var(--space-md) * -1);
   z-index: 1;
   background: var(--surface);
 }
@@ -894,7 +894,7 @@ main {
 }
 
 .ranking-table .frozen-name {
-  left: var(--space-3xl);
+  left: calc(var(--space-3xl) - var(--space-md));
 }
 
 .ranking-table th button {
