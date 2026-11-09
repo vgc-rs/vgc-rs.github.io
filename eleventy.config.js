@@ -140,6 +140,8 @@ function buildRankings(events) {
   const general = collect(() => true, total).filter(o => o.last >= RANKING_MIN && (o.tournaments >= RANKING_MIN * o.years || o.consistency > 0.5))
   const years = [...totals.keys()].sort((a, b) => b - a).map(year => ({ year, total: totals.get(year), players: collect(r => r.year === year, totals.get(year)).filter(o => o.tournaments >= RANKING_MIN) }))
 
+  general.forEach((o, i) => (o.place = i + 1))
+
   return { lastYear, general: { total, players: general }, years }
 }
 

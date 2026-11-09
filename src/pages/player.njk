@@ -15,6 +15,8 @@ eleventyComputed:
   <div class="event-titles">
     <h1>{{ player.display }}</h1>
     <p class="event-meta">{{ player.wins.length | winCount }}</p>
+    {% set rank = collections.rankings[0].general.players | playerNamed(player.name) %}
+    {% if rank %}<p class="event-meta"><a href="/ranking/">{{ rank.place }}º no Ranking</a>, Consistência {{ rank.consistency | percent }}, Ratio {{ rank.ratio | percent }}</p>{% endif %}
   </div>
 </header>
 
