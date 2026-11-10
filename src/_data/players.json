@@ -55,7 +55,9 @@
   { "name": "Rodrigo Peçanha", "aliases": [], "photo": "/assets/players/rodrigo-pecanha.webp" },
   { "name": "Tanauã Dias Martins", "aliases": ["Tanauã Dias", "Thanauã Dias Martins", "Thanauan Dias Martins"], "photo": "/assets/players/tanaua-dias-martins.webp" },
   { "name": "Thays Mueller", "aliases": [], "photo": null, "hidden": true },
+  { "name": "Victor Abianna", "aliases": [], "photo": "/assets/players/victor-abianna.webp" },
   { "name": "Victor Rebello", "aliases": [], "photo": "/assets/players/victor-rebello.webp" },
   { "name": "Vitor Miler", "aliases": [], "photo": "/assets/players/vitor-miler.webp" },
-  { "name": "Wagner Dutra", "aliases": [], "photo": "/assets/players/wagner-dutra.webp" }
+  { "name": "Wagner Dutra", "aliases": [], "photo": "/assets/players/wagner-dutra.webp" },
+  { "name": "Willian Almeida", "aliases": [], "photo": "/assets/players/willian-almeida.webp" }
 ]
