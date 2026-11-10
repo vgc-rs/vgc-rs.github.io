@@ -16,6 +16,7 @@
   { "name": "Felipe Ferreira", "nickname": "FF", "aliases": ["Felipe F."], "photo": "/assets/players/ff.webp", "majors": [{ "place": "Day 2", "events": ["Regional Joinville 2024"] }] },
   { "name": "Felipe Miller", "aliases": ["Felipe M."], "photo": "/assets/players/felipe-miller.webp" },
   { "name": "Fernando Zanutto", "aliases": [], "photo": "/assets/players/fernando-zanutto.webp" },
+  { "name": "Gabriel Perazolli Prestes", "aliases": [], "photo": "/assets/players/gabriel-perazolli-prestes.webp" },
   { "name": "Gustavo Felipe Sá Brito", "nickname": "Gus", "aliases": ["Gustavo Brito", "Gustavo Felipe S.", "Gustavo Felipe Sá", "Gus"], "photo": "/assets/players/gus.webp", "majors": [{ "place": "Day 2", "events": ["Regional Fortaleza 2025"] }] },
   { "name": "Gustavo Pereira", "nickname": "Guga", "aliases": ["Guga Pereira", "Gustavo P.", "Guga"], "photo": "/assets/players/guga.webp" },
   { "name": "Gustavo Travassos", "aliases": ["Guga Travassos"], "photo": "/assets/players/gustavo-travassos.webp" },
