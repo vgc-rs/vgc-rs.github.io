@@ -10,10 +10,10 @@ tournaments:
     divisions:
       - name: Master
         players:
-          - { place: 1, name: "Léo Ritter", record: "4-0-0" }
-          - { place: 2, name: "Bruno Pessanha", record: "3-1-0" }
-          - { place: 3, name: "Caju Colombo", record: "3-1-0" }
-          - { place: 4, name: "Felipe Miller", record: "3-1-0" }
+          - { place: 1, name: "Léo Ritter", record: "6-0-0" }
+          - { place: 2, name: "Caju Colombo", record: "4-2-0" }
+          - { place: 3, name: "Bruno Pessanha", record: "3-2-0" }
+          - { place: 4, name: "Felipe Miller", record: "3-2-0" }
           - { place: 5, name: "Gustavo Brito", record: "2-2-0" }
           - { place: 6, name: "Robson Bittencourt", record: "2-2-0" }
           - { place: 7, name: "Matheus Saueressig", record: "2-2-0" }
