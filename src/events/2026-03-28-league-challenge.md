@@ -10,10 +10,10 @@ tournaments:
     divisions:
       - name: Master
         players:
-          - { place: 1, name: "Felipe Miller", record: "4-0-0" }
-          - { place: 2, name: "Carlos Caju", record: "3-1-0" }
-          - { place: 3, name: "Leonardo Ritter", record: "3-1-0" }
-          - { place: 4, name: "Felipe Ferreira", record: "3-1-0" }
+          - { place: 1, name: "Leonardo Ritter", record: "5-1-0" }
+          - { place: 2, name: "Felipe Miller", record: "5-1-0" }
+          - { place: 3, name: "Carlos Caju", record: "3-2-0" }
+          - { place: 4, name: "Felipe Ferreira", record: "3-2-0" }
           - { place: 5, name: "Bento Ribeiro", record: "3-1-0" }
           - { place: 6, name: "Alexandre Brisa", record: "2-2-0" }
           - { place: 7, name: "Augusto Grovermann", record: "2-2-0" }
