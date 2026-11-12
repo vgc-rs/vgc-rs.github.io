@@ -19,13 +19,15 @@
         <span>VGC-RS</span>
         <img class="brand-mascot" src="/assets/baxcalibur.png" alt="" width="71" height="82" />
       </a>
-      <nav class="menu" aria-label="Principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+      <nav class="menu" id="menu" aria-label="Principal">
         {% set items = [["/", "Início"], ["/encontros/", "Encontros"], ["/resultados/", "Resultados"], ["/jogadores/", "Jogadores"], ["/ranking/", "Ranking"], ["/copa-dos-campeoes/", "Copa dos Campeões"], ["/agenda/", "Agenda"], ["/lojas/", "Lojas"], ["/historia/", "História"]] %}
         {% for item in items %}
           {% set active = (page.url == item[0]) or (item[0] != "/" and page.url.startsWith(item[0])) %}
           <a href="{{ item[0] }}" {% if active %}aria-current="page"{% endif %}>{{ item[1] }}</a>
         {% endfor %}
       </nav>
+      <div class="menu-scrim"></div>
       </div>
     </header>
 
@@ -40,6 +42,7 @@
         <span class="disclaimer">Pokémon e seus nomes são marcas da Nintendo, Game Freak e The Pokémon Company. Site feito por fãs, sem vínculo oficial.</span>
       </div>
     </footer>
+    <script src="/assets/menu.js" defer></script>
     <script src="/assets/gallery.js" defer></script>
   </body>
 </html>
